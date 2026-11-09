@@ -1,0 +1,9 @@
+{
+  "brief_title": "Apex Endurance Hydration Launch",
+  "brand": "Apex Performance Lab",
+  "min_words": 20,
+  "max_words": 120,
+  "mandatory_keywords": ["electrolyte", "Apex", "cramping", "runners"],
+  "forbidden_words": ["miracle", "cure", "cheap", "instant fix"],
+  "mandatory_disclaimers": ["These statements have not been evaluated by the FDA"]
+}

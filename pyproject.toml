@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brief-gate"
+version = "1.0.0"
+description = "Deterministic quality gate and compliance evaluator for AI marketing outputs."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Haider (@darimamhaider)", email = "haider@example.com" }
+]
+urls = { Homepage = "https://github.com/darimamhaider/brief-gate", Repository = "https://github.com/darimamhaider/brief-gate.git" }
+keywords = [
+    "marketing",
+    "evals",
+    "llm-as-judge",
+    "quality-gate",
+    "ad-compliance",
+    "copywriting-qa"
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+
+[project.scripts]
+brief-gate = "brief_gate.cli:main"
