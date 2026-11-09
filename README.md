@@ -1,24 +1,23 @@
 # brief-gate
 
-> **The deterministic quality gate for AI marketing output. Checks any generated ad copy, landing page, email, or blog post against the brief — returning Pass / Fix / Block with line-level findings.**
+> **The deterministic quality gate for AI marketing output. Evaluates generated ad copy, landing pages, emails, or blog posts against briefs using rule-based constraint and policy checks — returning Pass / Fix / Block with line-level findings.**
 
-[![PyPI version](https://img.shields.io/badge/pypi-v1.0.0-blue.svg)](https://pypi.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Evals for Marketing](https://img.shields.io/badge/Evals-Marketing%20QA-purple.svg)](https://github.com/darimamhaider/brief-gate)
+[![Rule-Based Evals](https://img.shields.io/badge/Evals-Deterministic%20QA-purple.svg)](https://github.com/darhaiderimam/brief-gate)
 
 ---
 
 ## The Problem: Generation is Solved. Verification is Not.
 
-Every open-source marketing skill generates copy. Nobody checks whether the output actually followed the brief:
-- Did the AI use a forbidden claim that gets your Meta ad account banned?
-- Did it miss the mandatory FDA or FTC disclaimer?
-- Did it blow past the 90-character Google Ads headline limit?
-- Did it commit a Meta §4.6 personal attribute violation (*"Are you tired of being overweight?"*)?
+Every marketing skill generates copy. Very few systems verify whether the output adhered to constraints:
+- Did the copy violate Meta §4.6 personal attribute rules (*"Are you tired of being overweight?"*) which trigger ad account bans?
+- Did it miss mandatory regulatory disclosures (FDA supplement disclaimers, FTC endorsements)?
+- Did it exceed character or word count limits?
+- Did it contain brand-forbidden words or unsupported medical claims?
 
-**`brief-gate` is the verification layer that plugs in after every AI marketing generator.**
-The LLM provides evidence; the Python code computes every number deterministically.
+**`brief-gate` provides the verification layer that runs after any text generator.**
+Instead of relying on fuzzy, non-deterministic LLM prompting to grade LLM output, `brief-gate` executes deterministic regex patterns, keyword sets, word count boundaries, and policy heuristics. Code computes every number deterministically.
 
 ```
 [Prompt] -> [Claude / GPT Generator] -> [Asset] -> [ brief-gate ] -> [ PASS / FIX / BLOCK ]
@@ -34,16 +33,18 @@ The LLM provides evidence; the Python code computes every number deterministical
 
 ## 30-Second Quickstart
 
-### 1. Install
+### 1. Install from Source
 ```bash
-pip install brief-gate
+git clone https://github.com/darhaiderimam/brief-gate.git
+cd brief-gate
+pip install .
 ```
-*(Or clone and run locally: `python -m brief_gate.cli`)*
 
 ### 2. Run Evaluation
 ```bash
 brief-gate evaluate --brief examples/sample_brief.json --asset examples/sample_asset.md
 ```
+*(Or run directly without installation: `python -m brief_gate.cli evaluate --brief examples/sample_brief.json --asset examples/sample_asset.md`)*
 
 ### 3. Real Output
 ```markdown
@@ -75,13 +76,13 @@ If a forbidden claim or personal attribute is detected:
 
 ---
 
-## How It Plugs into Existing Marketing Stacks
+## How It Plugs into Marketing Workflows
 
-`brief-gate` does not compete with Corey Haines' `marketingskills` or Daniel Agrici's `claude-blog` — **it audits them**.
+`brief-gate` works alongside any copywriting skill or script to enforce a pre-publication quality gate:
 
 ```bash
 # Example inside Claude Code or Cursor:
-claude "Run @copywriting to write Meta ad copy, then pipe the output through brief-gate"
+claude "Run @creative-brief to generate ad copy, then pipe the markdown output into brief-gate"
 ```
 
 ---
@@ -121,4 +122,4 @@ claude "Run @copywriting to write Meta ad copy, then pipe the output through bri
 ---
 
 ## License
-MIT © [Haider (@darimamhaider)](https://github.com/darimamhaider)
+MIT © [Imam Haider (@darhaiderimam)](https://github.com/darhaiderimam)

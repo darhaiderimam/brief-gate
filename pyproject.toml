@@ -10,16 +10,16 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-    { name = "Haider (@darimamhaider)", email = "haider@example.com" }
+    { name = "Imam Haider", email = "295730094+darhaiderimam@users.noreply.github.com" }
 ]
-urls = { Homepage = "https://github.com/darimamhaider/brief-gate", Repository = "https://github.com/darimamhaider/brief-gate.git" }
+urls = { Homepage = "https://github.com/darhaiderimam/brief-gate", Repository = "https://github.com/darhaiderimam/brief-gate.git" }
 keywords = [
     "marketing",
     "evals",
-    "llm-as-judge",
     "quality-gate",
     "ad-compliance",
-    "copywriting-qa"
+    "copywriting-qa",
+    "claude-code"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
